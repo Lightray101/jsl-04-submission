@@ -162,3 +162,34 @@ function createTaskElement(task) {
 
   return taskElement;
 }
+/**
+ * Opens the task modal with the given task data
+ * @param {Object} task - The task object to display in the modal
+ */
+function openTaskModal(task) {
+  // Create modal elements
+  const modal = document.createElement("div");
+  modal.className = "modal";
+
+  const modalContent = document.createElement("div");
+  modalContent.className = "modal-content";
+
+  // Create a header div for the title and close button
+  const modalHeader = document.createElement("div");
+  modalHeader.className = "modal-header";
+
+  // Create the modal title
+  const modalTitle = document.createElement("h2");
+  modalTitle.textContent = "Edit Task";
+
+  // Add a close button (X icon)
+  const closeButton = document.createElement("button");
+  closeButton.className = "close-modal-button";
+  closeButton.innerHTML = "&times;"; // HTML entity for 'times' (X)
+
+  // Append title and close button to the header
+  modalHeader.appendChild(modalTitle);
+  modalHeader.appendChild(closeButton);
+
+  // Append the header to modal content
+  modalContent.appendChild(modalHeader);
