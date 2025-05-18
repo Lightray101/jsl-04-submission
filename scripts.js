@@ -146,3 +146,19 @@ const taskColumns = {
   doing: document.querySelector('[data-status="doing"] .tasks-container'),
   done: document.querySelector('[data-status="done"] .tasks-container'),
 };
+/**
+ * Creates a task element with the given task data
+ * @param {Object} task - The task object containing id, title, description, and status
+ * @returns {HTMLElement} The created task element
+ */
+function createTaskElement(task) {
+  const taskElement = document.createElement("div");
+  taskElement.className = "task-div";
+  taskElement.dataset.taskId = task.id;
+  taskElement.textContent = task.title;
+
+  // Add click event to open modal
+  taskElement.addEventListener("click", () => openTaskModal(task));
+
+  return taskElement;
+}
