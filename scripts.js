@@ -193,3 +193,84 @@ function openTaskModal(task) {
 
   // Append the header to modal content
   modalContent.appendChild(modalHeader);
+  // Create form elements
+  const form = document.createElement("form");
+  form.innerHTML = `
+    <div class="form-group">
+      <label for="task-title">Title</label>
+      <input type="text" id="task-title" value="${task.title}" required>
+    </div>
+    <div class="form-group">
+      <label for="task-description">Description</label>
+      <textarea id="task-description" required>${task.description}</textarea>
+    </div>
+    <div class="form-group">
+      <label for="task-status">Status</label>
+      <select id="task-status">
+        <option value="todo" ${
+          task.status === "todo" ? "selected" : ""
+        }>To Do</option>
+        <option value="doing" ${
+          task.status === "doing" ? "selected" : ""
+        }>In Progress</option>
+        <option value="done" ${
+          task.status === "done" ? "selected" : ""
+        }>Done</option>
+      </select>
+    </div>
+  `; // Removed modal-buttons div
+
+  // Add form to modal content
+  modalContent.appendChild(form);
+
+  // Add event listeners
+  // Removed form submit listener
+
+  // Add event listener to modal backdrop
+  modal.addEventListener("click", (e) => {
+    // Check if the click was on the modal backdrop, not inside the modal-content
+    if (e.target === modal) {
+      // Gather current data from fields
+      const updatedData = {
+        title: document.getElementById("task-title").value,
+        description: document.getElementById("task-description").value,
+        status: document.getElementById("task-status").value,
+      };
+      // Update the task
+      updateTask(task.id, updatedData);
+      // Close the modal
+      modal.remove();
+    }
+  });
+
+  // Add event listener to the new close button
+  closeButton.addEventListener("click", () => {
+    // Gather current data from fields
+    const updatedData = {
+      title: document.getElementById("task-title").value,
+      description: document.getElementById("task-description").value,
+      status: document.getElementById("task-status").value,
+    };
+    // Update the task
+    updateTask(task.id, updatedData);
+    // Close the modal
+    modal.remove();
+  });
+
+  // Add modal to DOM
+  modal.appendChild(modalContent);
+  document.body.appendChild(modal);
+}
+
+/**
+ * Updates a task with new data and refreshes the display
+ * @param {number} taskId - The ID of the task to update
+ * @param {Object} newData - The new task data
+ */
+function updateTask(taskId, newData) {
+  const taskIndex = userTasks.findIndex((task) => task.id === taskId);
+  if (taskIndex !== -1) {
+    userTasks[taskIndex] = { ...userTasks[taskIndex], ...newData };
+    refreshTaskDisplay();
+  }
+}
