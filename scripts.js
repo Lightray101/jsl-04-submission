@@ -140,3 +140,9 @@ console.log("All tasks:", userTasks);
 
 // Log only completed tasks as an array
 console.log("Completed tasks:", getCompletedTasks(userTasks));
+// DOM Elements
+const taskColumns = {
+  todo: document.querySelector('[data-status="todo"] .tasks-container'),
+  doing: document.querySelector('[data-status="doing"] .tasks-container'),
+  done: document.querySelector('[data-status="done"] .tasks-container'),
+};
