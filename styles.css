@@ -325,3 +325,147 @@ h2 {
   max-height: 90vh;
   overflow-y: auto;
 }
+.modal h2 {
+  color: var(--text-color);
+  margin-bottom: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  color: var(--text-color);
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: inherit;
+}
+
+.form-group textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  margin-top: 2rem;
+}
+
+.save-btn,
+.close-btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 20px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.save-btn {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.save-btn:hover {
+  background-color: var(--primary-hover);
+}
+
+.close-btn {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+}
+
+.close-btn:hover {
+  background-color: var(--hover-color);
+}
+
+/* Task Interaction Styles */
+.task-div {
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.task-div:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Modal Styles */
+@media (max-width: 768px) {
+  .modal-content {
+    width: 95%;
+    padding: 1.5rem;
+  }
+
+  .modal-buttons {
+    flex-direction: column;
+  }
+
+  .save-btn,
+  .close-btn {
+    width: 100%;
+  }
+}
+
+.modal-content input,
+.modal-content textarea,
+.modal-content select {
+  display: block !important; /* Ensure elements respect width and padding */
+  width: 100% !important;
+  padding: 0.75rem !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 4px !important;
+  background-color: var(--bg-color) !important;
+  color: var(--text-color) !important;
+  font-family: inherit !important;
+  -webkit-appearance: textfield !important; /* Reset appearance for cross-browser compatibility */
+  -moz-appearance: textfield !important;
+  appearance: textfield !important;
+  resize: none; /* Prevent resizing */
+}
+
+/* Styles for the modal header */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem; /* Keep consistent spacing with form groups */
+}
+
+/* Adjusting modal title margin as it's now inside flex container */
+.modal-header h2 {
+  margin: 0;
+}
+
+/* Adjusting close button position as it's now inside flex container */
+.close-modal-button {
+  position: static; /* Remove absolute positioning */
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ff0000; /* Set color to red */
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  transition: color 0.2s ease;
+}
+
+.close-modal-button:hover {
+  color: #cc0000; /* Darker red on hover */
+}
